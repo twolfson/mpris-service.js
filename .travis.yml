@@ -18,13 +18,9 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y dbus libdbus-1-dev
 
-  # Debug
-  # TODO: Remove me
-  # - `libexpat1` ` libdbus-1-dev` `gpp`
-  # - Requires `dbus-x11`
-  # One fix we have working is to...
-  #   Run dbus-launch, output to file, add "export" to lines, run `. tmp.sh`
-  - dbus-launch
+  # Start up a dbus instance
+  # http://linux.die.net/man/1/dbus-launch
+  - eval "dbus-launch --sh-syntax --exit-with-session"
 
 notifications:
   email: false
