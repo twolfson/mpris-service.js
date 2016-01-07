@@ -20,7 +20,7 @@ before_install:
 
   # Start up a dbus instance
   # http://linux.die.net/man/1/dbus-launch
-  - eval "dbus-launch --sh-syntax --exit-with-session"
+  - eval "$(dbus-launch --sh-syntax)"
 
 notifications:
   email: false
