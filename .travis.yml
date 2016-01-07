@@ -20,6 +20,7 @@ before_install:
 
   # Debug
   # TODO: Remove me
+  - `libexpat1` ` libdbus-1-dev` `gpp`
   - ls /run/dbus || true
   - dbus-launch
 
