@@ -6,7 +6,7 @@ var MprisService = require('../');
 // Define common utilities
 var mprisUtils = {
   _init: function (params) {
-    before(function initFn (done) {
+    before(function _initFn (done) {
       // Create our service
       var that = this;
       MprisService.createService(params, function handleCreateService (err, code, mprisService) {
@@ -33,7 +33,19 @@ var mprisUtils = {
     });
   },
   _connect: function (name) {
+    before(function _connectFn (done) {
+      // Verify we are the only subscriber
+      assert.strictEqual(this.mprisSubscriber, undefined,
+        '`mprisUtils._connect` called while another connection is already in progress. ' +
+        'Please don\'t connect to multiple MPRIS services at the same time');
 
+      // Save our subscriber and connect
+      this.mprisSubscriber = mprisSubscriber;
+      mprisSubscriber.connect(name, done);
+    });
+    after(function cleanup () {
+      delete this.mprisSubscriber;
+    });
   }
 };
 
