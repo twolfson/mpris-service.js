@@ -16,7 +16,6 @@ before_install:
 
   # Add `dbus` dependency
   - sudo apt-get update
-  - apt-cache search libdbus
   - sudo apt-get install libdbus-1-dev
 
 notifications:
