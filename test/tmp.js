@@ -2,6 +2,12 @@
 var mprisSubscriber = require('mpris');
 var MprisService = require('../');
 
+// TODO: Make either named test setups
+//   e.g. `mprisUtils.createService('hello-world');
+// or unique ones
+//   e.g. `mprisUtils.createService(Math.random() + '');
+// Prob the former
+
 // Define our constants
 var MPRIS_NAME = 'MprisTest';
 
