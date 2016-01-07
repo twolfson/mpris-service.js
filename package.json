@@ -27,7 +27,8 @@
     "test": "npm run precheck && mocha --reporter dot && npm run lint"
   },
   "dependencies": {
-    "dbus-native": "~0.2.0"
+    "dbus-native": "~0.2.0",
+    "debug": "~2.2.0"
   },
   "devDependencies": {
     "foundry": "~4.0.3",
