@@ -18,5 +18,11 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y dbus libdbus-1-dev
 
+  # Debug
+  # TODO: Remove me
+  - env | grep DBU
+  - ls /run/dbus || true
+  - dbus-launch
+
 notifications:
   email: false
