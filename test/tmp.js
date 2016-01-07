@@ -9,6 +9,7 @@ var MPRIS_NAME = 'MprisTest';
 MprisService.createService({
   name: MPRIS_NAME
 }, function handleCreateService (err, code, mprisService) {
+  console.log('oh hai', arguments);
   // If there was an error, throw it
   if (err) {
     throw err;
