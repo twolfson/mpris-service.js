@@ -1,10 +1,25 @@
 // Load in our dependencies
 var assert = require('assert');
+var _ = require('underscore');
 var mprisSubscriber = require('mpris');
 var MprisService = require('../');
 
 // Define common utilities
 var mprisUtils = {
+  init: function (params) {
+    // Verify we have a name
+    assert(params.name, '`mprisUtils.init` expected to receive "params.name" but it did not. ' +
+      'Please provide a name for the MPRIS service (e.g. "basic-connect")');
+
+    // Prepend our name for the test
+    params = _.defaults({
+      name: 'mpris-service-test-' + params.name
+    }, params);
+
+    // Start our connections
+    mprisUtils._init(params);
+    mprisUtils._connect(params.name);
+  },
   _init: function (params) {
     before(function _initFn (done) {
       // Create our service
@@ -52,8 +67,11 @@ var mprisUtils = {
 
 // Start our tests
 describe('An MPRIS service', function () {
+  mprisUtils.init({name: 'basic-connect'});
+
   it('can be accessed by an MPRIS client', function () {
-    assert.strictEqual(mprisService(), 'awesome');
+    // DEV: We would have errored out on `connect`
+    assert(this.mprisSubscriber);
   });
 
   it.skip('lists introspectable interfaces', function () {

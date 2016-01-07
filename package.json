@@ -38,7 +38,8 @@
     "jshint": "~2.5.10",
     "mocha": "~1.11.0",
     "mpris": "0.0.2",
-    "twolfson-style": "~1.6.0"
+    "twolfson-style": "~1.6.0",
+    "underscore": "~1.8.3"
   },
   "keywords": [
     "mpris",
