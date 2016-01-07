@@ -20,7 +20,6 @@ before_install:
 
   # Debug
   # TODO: Remove me
-  - env | grep DBU
   - ls /run/dbus || true
   - dbus-launch
 
