@@ -26,7 +26,9 @@
     "pretest": "twolfson-style install",
     "test": "npm run precheck && mocha --reporter dot && npm run lint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "dbus-native": "~0.2.0"
+  },
   "devDependencies": {
     "foundry": "~4.0.3",
     "foundry-release-git": "~2.0.2",
@@ -34,6 +36,7 @@
     "jscs": "~1.7.3",
     "jshint": "~2.5.10",
     "mocha": "~1.11.0",
+    "mpris": "0.0.2",
     "twolfson-style": "~1.6.0"
   },
   "keywords": [
