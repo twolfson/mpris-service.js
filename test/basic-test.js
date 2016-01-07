@@ -55,6 +55,8 @@ var mprisUtils = {
         'Please don\'t connect to multiple MPRIS services at the same time');
 
       // Save our subscriber and connect
+      // https://github.com/JumpLink/node-mpris/blob/v0.0.2/example/play.js
+      // https://github.com/JumpLink/node-mpris/blob/v0.0.2/mpris.js#L365
       this.mprisSubscriber = mprisSubscriber;
       mprisSubscriber.connect(name, done);
     });
