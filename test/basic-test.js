@@ -40,6 +40,7 @@ var mprisUtils = {
 
         // Otherwise, save our service
         that.mprisService = mprisService;
+        done();
       });
     });
     after(function cleanup () {
