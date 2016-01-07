@@ -20,8 +20,10 @@ before_install:
 
   # Debug
   # TODO: Remove me
-  - `libexpat1` ` libdbus-1-dev` `gpp`
-  - ls /run/dbus || true
+  # - `libexpat1` ` libdbus-1-dev` `gpp`
+  # - Requires `dbus-x11`
+  # One fix we have working is to...
+  #   Run dbus-launch, output to file, add "export" to lines, run `. tmp.sh`
   - dbus-launch
 
 notifications:
