@@ -1,5 +1,5 @@
 {
-  "name": "mpris-service",
+  "name": "mpris-service.js",
   "description": "JavaScript based MPRIS service",
   "version": "1.0.0",
   "homepage": "https://github.com/twolfson/mpris-service.js",
