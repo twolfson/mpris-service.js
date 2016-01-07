@@ -67,7 +67,6 @@ var mprisUtils = {
   }
 };
 
-
 // Start our tests
 describe('An MPRIS service', function () {
   mprisUtils.init({name: 'basic-connect'});
@@ -77,7 +76,9 @@ describe('An MPRIS service', function () {
     assert(this.mprisSubscriber);
   });
 
-  it.skip('lists introspectable interfaces', function () {
-
+  it('lists introspectable interfaces', function () {
+    // Verify methods and property methods are accessible
+    assert(this.mprisSubscriber.Player.Next);
+    assert(this.mprisSubscriber.Player.GetCanGoNext);
   });
 });
