@@ -1,12 +1,12 @@
-# mpris-service [![Build status](https://travis-ci.org/twolfson/mpris-service.svg?branch=master)](https://travis-ci.org/twolfson/mpris-service)
+# mpris-service.js [![Build status](https://travis-ci.org/twolfson/mpris-service.js.svg?branch=master)](https://travis-ci.org/twolfson/mpris-service.js)
 
 JavaScript based MPRIS service
 
 ## Getting Started
-Install the module with: `npm install mpris-service`
+Install the module with: `npm install mpris-service.js`
 
 ```js
-var mprisService = require('mpris-service');
+var mprisService = require('mpris-service.js');
 mprisService(); // 'awesome'
 ```
 
