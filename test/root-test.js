@@ -28,7 +28,8 @@ describe('A default MPRIS Root interface', function () {
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:HasTrackList
 
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:Identity
-  it('has our service identity', function () {
+  mprisUtils.getRootProperties(['Identity']);
+  it('defaults our service identity to the dbus name', function () {
     // TODO: Complete me
   });
 
