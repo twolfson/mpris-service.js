@@ -10,6 +10,7 @@ describe('A default MPRIS Root interface', function () {
   it('defaults noop properties to false', function () {
     // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanQuit
     // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanRaise
+    console.log(this.mprisSubscriber);
     assert.strictEqual(this.mprisSubscriber.CanQuit, false);
     assert.strictEqual(this.mprisSubscriber.CanRaise, false);
   });
