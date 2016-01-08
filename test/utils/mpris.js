@@ -1,10 +1,11 @@
 // Load in our dependencies
 var assert = require('assert');
 var _ = require('underscore');
+var async = require('async');
 var mprisSubscriber = require('mpris');
 var MprisService = require('../../');
 
-// Define our utilities
+// Define initialization utilities
 exports.init = function (params) {
   // Verify we have a name
   assert(params.name, '`mprisUtils.init` expected to receive "params.name" but it did not. ' +
@@ -19,7 +20,6 @@ exports.init = function (params) {
   exports._init(params);
   exports._connect(params.name);
 };
-
 exports._init = function (params) {
   before(function _initFn (done) {
     // Create our service
@@ -48,7 +48,6 @@ exports._init = function (params) {
     delete this.mprisService;
   });
 };
-
 exports._connect = function (name) {
   before(function _connectFn (done) {
     // Verify we are the only subscriber
@@ -65,4 +64,38 @@ exports._connect = function (name) {
   after(function cleanup () {
     delete this.mprisSubscriber;
   });
+};
+
+// Define property utilities
+exports._getProperties = function (obj, properties, callback) {
+  var that = this;
+  async.each(properties, function _getPropertyFn (property, cb) {
+    // Resolve the method for our property (e.g. `CanQuit` -> `GetCanQuit`)
+    var method = 'Get' + property;
+    obj[method](function handleGet (err, result) {
+      // Save the result and callback
+      that[property] = result;
+      cb(err);
+    });
+  }, callback);
+};
+exports.cleanupProperties = function (properties) {
+  after(function cleanupPropertiesFn () {
+    var that = this;
+    properties.forEach(function cleanupProperty (property) {
+      delete that[property];
+    });
+  });
+};
+exports.getRootProperties = function (properties) {
+  before(function getRootPropertiesFn (done) {
+    // Verify we have our subscriber
+    assert.notEqual(this.mprisSubscriber, undefined,
+      '`mprisUtils.getRootProperties` expected `this.mprisSubscriber` to be defined but it was not.' +
+      'Please run `mprisUtils.init` before calling `getRootProperties`');
+
+    // Retrieve and save our properties
+    exports._getProperties.call(this.mprisSubscriber, properties, done);
+  });
+  exports.cleanupProperties(properties);
 };

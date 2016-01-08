@@ -12,7 +12,7 @@ describe('A default MPRIS Root interface', function () {
   //   `it('defaults CanQuit to false', mprisUtils.getProperty('CanQuit', function (CanQuit) {})`
   //   `mprisUtils.assertProperty('CanQuit', false);` in place of `it`
   //   `describe('CanQuit', function () { mprisUtils.getProperty('CanQuit'); it('defaults CanQuit')`
-  //   `mprisUtils.getProperties(['CanQuit', 'CanRaise']); it(function () { this.CanQuit; });
+  //   `mprisUtils.getRootProperties(['CanQuit', 'CanRaise']); it(function () { this.CanQuit; });
   //   ^^^ winner
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanQuit
   it('defaults CanQuit to false', function (done) {
