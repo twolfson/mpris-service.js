@@ -31,4 +31,7 @@ describe('A default MPRIS Root interface', function () {
       done();
     });
   });
+
+  it('hides optional properties', function () {
+  });
 });
