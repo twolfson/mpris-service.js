@@ -28,7 +28,7 @@ describe('A default MPRIS Root interface', function () {
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:HasTrackList
 
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:Identity
-  mprisUtils.getRootProperties(['Identity']);
+  mprisUtils.getRootProperties(['Identity', 'SupportedUriSchemes', 'SupportedMimeTypes']);
   it('defaults our service identity to the dbus name', function () {
     // TODO: Complete me
   });
