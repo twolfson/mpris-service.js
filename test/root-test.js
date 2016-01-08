@@ -32,6 +32,25 @@ describe('A default MPRIS Root interface', function () {
     });
   });
 
-  it('hides optional properties', function () {
+  it('does not have optional properties', function () {
+    expect(this.mprisSubscriber).to.not.have.property('Fullscreen');
+    expect(this.mprisSubscriber).to.not.have.property('CanSetFullscreen');
+    expect(this.mprisSubscriber).to.not.have.property('DesktopEntry');
+  });
+
+  // TODO: Figure out what to do for `HasTrackList`
+  // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:HasTrackList
+
+  // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:Identity
+  it('has our service identity', function () {
+    // TODO: Complete me
+  });
+
+  it('has no supported URI schemes', function () {
+    // TODO: Complete me
+  });
+
+  it('has no supported mime-types', function () {
+    // TODO: Complete me
   });
 });
