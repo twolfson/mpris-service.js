@@ -33,6 +33,8 @@ describe('A default MPRIS Root interface', function () {
     expect(this.Identity).to.equal('mpris-service-test-root-default');
   });
 
+  // TODO: Disable when not on Travis CI. Silly but necessary due to `MPRIS` using `GetAll`
+  //   https://github.com/sidorares/node-dbus/issues/102
   it('has no supported URI schemes', function () {
     expect(this.SupportedUriSchemes).to.deep.equal([]);
   });
