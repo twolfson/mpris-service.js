@@ -2,10 +2,9 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  # DEV: We currently don't test `node@0.10` due to `nan` issues for `dbus`
+  # DEV: We currently don't test `node@0.10` nor `node@0.12` due to `nan` issues for `dbus`
   - "5.3"
   - "4.2"
-  - "0.12"
 
 before_install:
   # Repair npm issues for Travis CI
