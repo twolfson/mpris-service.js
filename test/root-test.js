@@ -7,11 +7,21 @@ var mprisUtils = require('./utils/mpris');
 describe('A default MPRIS Root interface', function () {
   mprisUtils.init({name: 'root-default'});
 
-  it('defaults noop properties to false', function () {
-    // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanQuit
-    // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanRaise
-    console.log(this.mprisSubscriber);
-    assert.strictEqual(this.mprisSubscriber.CanQuit, false);
-    assert.strictEqual(this.mprisSubscriber.CanRaise, false);
+  // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanQuit
+  it('defaults CanQuit to false', function (done) {
+    this.mprisSubscriber.GetCanQuit(function handleGetCanQuit (err, CanQuit) {
+      if (err) { return done(err); }
+      assert.strictEqual(CanQuit, false);
+      done();
+    });
+  });
+
+  // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanRaise
+  it('defaults CanRaise to false', function (done) {
+    this.mprisSubscriber.GetCanRaise(function handleGetCanRaise (err, CanRaise) {
+      if (err) { return done(err); }
+      assert.strictEqual(CanRaise, false);
+      done();
+    });
   });
 });
