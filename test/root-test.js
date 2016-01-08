@@ -1,5 +1,5 @@
 // Load in our dependencies
-var assert = require('assert');
+var expect = require('chai').expect;
 var mprisUtils = require('./utils/mpris');
 
 // Start our tests
@@ -18,7 +18,7 @@ describe('A default MPRIS Root interface', function () {
   it('defaults CanQuit to false', function (done) {
     this.mprisSubscriber.GetCanQuit(function handleGetCanQuit (err, CanQuit) {
       if (err) { return done(err); }
-      assert.strictEqual(CanQuit, false);
+      expect(CanQuit).to.equal(false);
       done();
     });
   });
@@ -27,7 +27,7 @@ describe('A default MPRIS Root interface', function () {
   it('defaults CanRaise to false', function (done) {
     this.mprisSubscriber.GetCanRaise(function handleGetCanRaise (err, CanRaise) {
       if (err) { return done(err); }
-      assert.strictEqual(CanRaise, false);
+      expect(CanRaise).to.equal(false);
       done();
     });
   });

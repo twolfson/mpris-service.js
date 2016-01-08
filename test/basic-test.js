@@ -1,5 +1,5 @@
 // Load in our dependencies
-var assert = require('assert');
+var expect = require('chai').expect;
 var mprisUtils = require('./utils/mpris');
 
 // Start our tests
@@ -8,12 +8,12 @@ describe('An MPRIS service', function () {
 
   it('can be accessed by an MPRIS client', function () {
     // DEV: We would have errored out on `connect`
-    assert(this.mprisSubscriber);
+    expect(this.mprisSubscriber).to.not.equal(undefined);
   });
 
   it('lists introspectable interfaces', function () {
     // Verify methods and property methods are accessible
-    assert(this.mprisSubscriber.Player.Next);
-    assert(this.mprisSubscriber.Player.GetCanGoNext);
+    expect(this.mprisSubscriber.Player).to.have.property('Next');
+    expect(this.mprisSubscriber.Player).to.have.property('GetCanGoNext');
   });
 });
