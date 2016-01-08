@@ -6,30 +6,16 @@ var mprisUtils = require('./utils/mpris');
 // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html
 describe('A default MPRIS Root interface', function () {
   mprisUtils.init({name: 'root-default'});
+  mprisUtils.getRootProperties(['CanQuit', 'CanRaise']);
 
-  // TODO: Break down into utilities for simpler asserts -- it's going to get a lot more complex
-  //   Initial thoughts
-  //   `it('defaults CanQuit to false', mprisUtils.getProperty('CanQuit', function (CanQuit) {})`
-  //   `mprisUtils.assertProperty('CanQuit', false);` in place of `it`
-  //   `describe('CanQuit', function () { mprisUtils.getProperty('CanQuit'); it('defaults CanQuit')`
-  //   `mprisUtils.getRootProperties(['CanQuit', 'CanRaise']); it(function () { this.CanQuit; });
-  //   ^^^ winner
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanQuit
-  it('defaults CanQuit to false', function (done) {
-    this.mprisSubscriber.GetCanQuit(function handleGetCanQuit (err, CanQuit) {
-      if (err) { return done(err); }
-      expect(CanQuit).to.equal(false);
-      done();
-    });
+  it('defaults CanQuit to false', function () {
+    expect(this.CanQuit).to.equal(false);
   });
 
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:CanRaise
-  it('defaults CanRaise to false', function (done) {
-    this.mprisSubscriber.GetCanRaise(function handleGetCanRaise (err, CanRaise) {
-      if (err) { return done(err); }
-      expect(CanRaise).to.equal(false);
-      done();
-    });
+  it('defaults CanRaise to false', function () {
+    expect(this.CanRaise).to.equal(false);
   });
 
   it('does not have optional properties', function () {

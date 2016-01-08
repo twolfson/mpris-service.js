@@ -72,6 +72,7 @@ exports._getProperties = function (obj, properties, callback) {
   async.each(properties, function _getPropertyFn (property, cb) {
     // Resolve the method for our property (e.g. `CanQuit` -> `GetCanQuit`)
     var method = 'Get' + property;
+    assert(obj[method], 'Expected `obj[' + property + ']` to be defined but it was not.');
     obj[method](function handleGet (err, result) {
       // Save the result and callback
       that[property] = result;
@@ -95,7 +96,7 @@ exports.getRootProperties = function (properties) {
       'Please run `mprisUtils.init` before calling `getRootProperties`');
 
     // Retrieve and save our properties
-    exports._getProperties.call(this.mprisSubscriber, properties, done);
+    exports._getProperties.call(this, this.mprisSubscriber, properties, done);
   });
   exports.cleanupProperties(properties);
 };
