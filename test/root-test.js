@@ -4,7 +4,7 @@ var mprisUtils = require('./utils/mpris');
 
 // Start our tests
 // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html
-describe('A default MPRIS Root interface', function () {
+describe('A default MPRIS root interface', function () {
   mprisUtils.init({name: 'root-default'});
   mprisUtils.getRootProperties(['CanQuit', 'CanRaise']);
 
@@ -24,8 +24,11 @@ describe('A default MPRIS Root interface', function () {
     expect(this.mprisSubscriber).to.not.have.property('DesktopEntry');
   });
 
-  // TODO: Figure out what to do for `HasTrackList`
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:HasTrackList
+  mprisUtils.getRootProperties(['HasTrackList']);
+  it('has lists HasTrackList as false', function () {
+    expect(this.HasTrackList).to.equal(false);
+  });
 
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:Identity
   mprisUtils.getRootProperties(['Identity']);
@@ -43,5 +46,37 @@ describe('A default MPRIS Root interface', function () {
 
   it.skip('has no supported mime-types', function () {
     expect(this.SupportedMimeTypes).to.deep.equal([]);
+  });
+});
+
+describe.skip('An fullscreen friendly root interface', function () {
+  it('lists our current Fullscreen status', function () {
+
+  });
+
+  it('lists CanSetFullscreen as true', function () {
+
+  });
+
+  describe('being updated by a client', function () {
+    it('updates the Fullscreen status', function () {
+
+    });
+
+    it.skip('emits change event for Fullscreen', function () {
+
+    });
+  });
+});
+
+describe.skip('A root interface with a track list', function () {
+  it('lists HasTrackList as true', function () {
+
+  });
+});
+
+describe.skip('A root interface with a desktop entry', function () {
+  it('lists our DesktopEntry', function () {
+
   });
 });
