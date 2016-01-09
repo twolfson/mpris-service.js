@@ -2,6 +2,8 @@
 
 JavaScript based MPRIS service
 
+// TODO: Add back array handling
+
 ## Getting Started
 Install the module with: `npm install mpris-service.js`
 
