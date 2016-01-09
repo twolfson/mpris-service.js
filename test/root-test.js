@@ -49,34 +49,87 @@ describe('A default MPRIS root interface', function () {
   });
 });
 
-describe.skip('An fullscreen friendly root interface', function () {
-  it('lists our current Fullscreen status', function () {
+describe('A root interface with everything set', function () {
+  mprisUtils.init({
+    name: 'root-set-everything',
+    Root: {
+      // Methods
+      // TODO: Figure out how to get context for Raise
+      //   Probably make an `_init` but that's not too reusable
+      // TODO: Don't forget to cleanup
+      Raise: function () {
+        that.raiseCalled = true;
+      },
+      Quit: function () {
+        that.quitCalled = true;
+      },
 
+      // Properties
+      Identity: 'hello-world',
+      SupportedUriSchemes: ['file', 'http'],
+      SupportedMimeTypes: ['audio/mpeg'],
+
+      // Optional properties
+      Fullscreen: true,
+      DesktopEntry: '/usr/share/applications/python2.7.desktop'
+    },
+    TrackList: {}
+  });
+
+  mprisUtils.getRootProperties(['CanRaise', 'CanQuit']);
+  it('has CanRaise set to true', function () {
+    expect(this.CanRaise).to.equal(true);
+  });
+
+  it('has CanQuit set to true', function () {
+    expect(this.CanQuit).to.equal(true);
+  });
+
+  mprisUtils.getRootProperties(['Fullscreen', 'CanSetFullscreen']);
+  it('lists our Fullscreen status', function () {
+    expect(this.Fullscreen).to.equal(true);
   });
 
   it('lists CanSetFullscreen as true', function () {
-
+    expect(this.CanSetFullscreen).to.equal(true);
   });
 
-  describe('being updated by a client', function () {
-    it('updates the Fullscreen status', function () {
-
-    });
-
-    it.skip('emits change event for Fullscreen', function () {
-
-    });
-  });
-});
-
-describe.skip('A root interface with a track list', function () {
+  mprisUtils.getRootProperties(['HasTrackList', 'DesktopEntry']);
   it('lists HasTrackList as true', function () {
+    expect(this.HasTrackList).to.equal(true);
+  });
 
+  it('lists our DesktopEntry', function () {
+    expect(this.DesktopEntry).to.equal('/usr/share/applications/python2.7.desktop');
+  });
+
+  // TODO: Test me
+  describe.skip('when Raise is called', function () {
+    it('calls our Raise method', function () {
+
+    });
+  });
+
+  describe.skip('when Quit is called', function () {
+    it('calls our Quit method', function () {
+
+    });
   });
 });
 
-describe.skip('A root interface with a desktop entry', function () {
-  it('lists our DesktopEntry', function () {
+describe('A fullscreen friendly root interface being updated by a client', function () {
+  mprisUtils.init({
+    name: 'root-fullscreen',
+    Root: {
+      Fullscreen: true
+    }
+  });
+
+  it.skip('updates the Fullscreen status', function () {
+
+  });
+
+  it.skip('emits change event for Fullscreen', function () {
 
   });
 });
