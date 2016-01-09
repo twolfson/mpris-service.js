@@ -54,14 +54,11 @@ describe('A root interface with everything set', function () {
     name: 'root-set-everything',
     Root: {
       // Methods
-      // TODO: Figure out how to get context for Raise
-      //   Probably make an `_init` but that's not too reusable
-      // TODO: Don't forget to cleanup
       Raise: function () {
-        that.raiseCalled = true;
+        this._raiseCalled = true;
       },
       Quit: function () {
-        that.quitCalled = true;
+        this._quitCalled = true;
       },
 
       // Properties
@@ -103,16 +100,23 @@ describe('A root interface with everything set', function () {
     expect(this.DesktopEntry).to.equal('/usr/share/applications/python2.7.desktop');
   });
 
-  // TODO: Test me
-  describe.skip('when Raise is called', function () {
-    it('calls our Raise method', function () {
+  describe('when Raise is called', function () {
+    before(function callRaise (done) {
+      this.mprisSubscriber.Raise(done);
+    });
 
+    it('calls our Raise method', function () {
+      expect(this.mprisService.Root.info).to.have.property('_raiseCalled', true);
     });
   });
 
-  describe.skip('when Quit is called', function () {
-    it('calls our Quit method', function () {
+  describe('when Quit is called', function () {
+    before(function callQuit (done) {
+      this.mprisSubscriber.Quit(done);
+    });
 
+    it('calls our Quit method', function () {
+      expect(this.mprisService.Root.info).to.have.property('_quitCalled', true);
     });
   });
 });
