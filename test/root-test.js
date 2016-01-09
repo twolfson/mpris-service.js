@@ -128,9 +128,13 @@ describe('A fullscreen friendly root interface being updated by a client', funct
       Fullscreen: true
     }
   });
+  before(function updateFullscreen (done) {
+    this.mprisSubscriber.SetFullscreen(false, done);
+  });
 
-  it.skip('updates the Fullscreen status', function () {
-
+  mprisUtils.getRootProperties(['Fullscreen']);
+  it('updates the Fullscreen status', function () {
+    expect(this.Fullscreen).to.equal(false);
   });
 
   it.skip('emits change event for Fullscreen', function () {
