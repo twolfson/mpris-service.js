@@ -28,18 +28,20 @@ describe('A default MPRIS Root interface', function () {
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:HasTrackList
 
   // http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:Identity
-  mprisUtils.getRootProperties(['Identity', 'SupportedUriSchemes', 'SupportedMimeTypes']);
+  mprisUtils.getRootProperties(['Identity']);
   it('defaults our service identity to the dbus name', function () {
     expect(this.Identity).to.equal('mpris-service-test-root-default');
   });
 
-  // TODO: Disable when not on Travis CI. Silly but necessary due to `MPRIS` using `GetAll`
+  // TODO: Re-enable these tests
+  // DEV: We can enable on Travis CI since issue is being caused by `MPRIS` using `GetAll`
   //   https://github.com/sidorares/node-dbus/issues/102
-  it('has no supported URI schemes', function () {
+  // mprisUtils.getRootProperties(['SupportedUriSchemes', 'SupportedMimeTypes']);
+  it.skip('has no supported URI schemes', function () {
     expect(this.SupportedUriSchemes).to.deep.equal([]);
   });
 
-  it('has no supported mime-types', function () {
+  it.skip('has no supported mime-types', function () {
     expect(this.SupportedMimeTypes).to.deep.equal([]);
   });
 });
