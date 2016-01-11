@@ -40,7 +40,7 @@ Interface implementation for `MediaPlayer2`
 http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html
 
 - params `Object` - Same parameters as `new MprisService(params)`
-    - Root `Object` - Container for parameters specific to our interface
+    - Root `Object` - Container for parameters specific to `RootInterface`
         - Raise `Function` - Optional method to invoke to raise our media player
             - If this is provided, we will set `CanRaise` to `true`
             - Otherwise, `CanRaise` will be `false`
@@ -52,6 +52,24 @@ http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html
             - Due to upstream issues, we cannot handle write actions
         - CanSetFullscreen `Boolean` - Optional boolean indicating that fullscreen status can remotely be set
             - If this is provided, then `Fullscreen` must be set as well
+        - Identity `String` - Human friendly name to identify media player by
+            - For example, "google-music-electron"
+            - If this is not provided, we will use `params.name`
+            - http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:Identity
+        - DesktopEntry `String` - Optional basename of corresponding desktop entry
+            - For example, `/usr/share/applications/vlc.desktop` should have `vlc` as its `DesktopEntry`
+            - http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:DesktopEntry
+        - SupportedUriSchemes `Array<String>` - Array of strings indicating URI schemes supported by the media player
+            - For example, `['file', 'http']` indicates that `file://` and `http://` URI schemes are supported
+            - If this is not provided, then we will use an empty array (i.e. `[]`)
+            - http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:SupportedUriSchemes
+        - SupportedMimeTypes `Array<String>` - Array of strings indicating mime-types supported by the media player
+            - For example, `['audio/mpeg', 'application/ogg']` indicates MPEG and OGG files are supported
+            - If this is not provided, then we will use an empty array (i.e. `[]`)
+            - http://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:SupportedUriSchemes
+    - TrackList `Object` - Container for parameters specific to `TrackListInterface`
+        - If this is provided, then we will set `HasTrackList` to `true`
+        - Otherwise, `HasTrackList` will be `false`
 
 ## Examples
 _(Coming soon)_
