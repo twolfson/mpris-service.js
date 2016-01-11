@@ -68,6 +68,7 @@ describe('A root interface with everything set', function () {
 
       // Optional properties
       Fullscreen: true,
+      CanSetFullscreen: true,
       DesktopEntry: '/usr/share/applications/python2.7.desktop'
     },
     TrackList: {}
@@ -127,7 +128,8 @@ describe.skip('A fullscreen friendly root interface being updated by a client', 
   mprisUtils.init({
     name: 'root-fullscreen',
     Root: {
-      Fullscreen: true
+      Fullscreen: true,
+      CanSetFullscreen: true
     }
   });
   before(function updateFullscreen (done) {
