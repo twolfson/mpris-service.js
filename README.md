@@ -5,6 +5,13 @@ JavaScript based MPRIS service
 // TODO: Add back array handling
 // TODO: Take care of all TODOs
 
+**Missing/broken features:**
+
+- `GetAll` not supported for `Root`
+    - TODO: Link to upstream issue
+- Using `Set` on properties not supported
+    - TODO: Link to upstream issue
+
 ## Getting Started
 Install the module with: `npm install mpris-service.js`
 
