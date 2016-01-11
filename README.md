@@ -4,6 +4,8 @@ JavaScript based MPRIS service
 
 ## This library is still a work in progress and incomplete
 
+// TODO: If we come back to resume this, we had started `PlayerInterface` (haven't touched `TrackList` nor `Playlists` yet). Methods are set up, properties are not. We need to add tests for methods. We can base everything off of work in `RootInterface`
+
 // TODO: Add back array handling
 // TODO: Handle and document `Set` actions (from our API, not a client) for the interfaces (e.g. updating `Fullscreen` status)
 //    `mrpisService.Root.Set('Fullscreen', true);` // Updates value, notifies DBus...Properties
