@@ -140,6 +140,7 @@ describe.skip('A fullscreen friendly root interface being updated by a client', 
   });
 
   it.skip('emits change event for Fullscreen', function () {
-
+    // TODO: Listen to `on('change', function (property, value) {})`
+    //   or maybe `on('Set', ...` for semantics
   });
 });
