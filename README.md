@@ -5,6 +5,7 @@ JavaScript based MPRIS service
 ## This library is still a work in progress and incomplete
 
 // TODO: Add back array handling
+// TODO: Handle and document `Set` actions (from our API, not a client) for the interfaces (e.g. updating `Fullscreen` status)
 // TODO: Take care of all TODOs
 
 **Missing/broken features:**
